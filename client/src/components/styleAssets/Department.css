@@ -1,0 +1,115 @@
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  padding: 40px;
+}
+
+.department-container {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  position: relative;
+}
+
+.department-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.department-table th {
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.department-table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.department-table tbody tr:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+.add-button-container {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.update {
+  background-color: rgb(84, 181, 84);
+  color: white;
+}
+
+/* .delete {
+  background-color: rgb(188, 20, 20);
+  color: white;
+} */
+
+.update, .delete {
+  text-decoration: solid;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.update:hover, .delete:hover {
+  background-color: rgba(87, 153, 223, 0.8);
+  color: rgb(73, 67, 67);
+}
+
+.add-button{
+  align-items: center;
+  background-color: #494545;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
+.add-button:hover {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+.department-table tbody tr:hover {
+  background-color: rgb(91, 92, 95); 
+  color: #fff; 
+  transform: perspective(100px) translateZ(0px) rotateX(0deg); 
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; 
+}

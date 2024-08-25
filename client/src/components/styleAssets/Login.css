@@ -1,0 +1,94 @@
+.d-flex {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+  }
+  
+  .box{
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 25%;
+    background-color: rgba(255, 255, 255, 0.6); 
+    backdrop-filter: blur(10px); 
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+
+  label {
+    font-size: 16px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+
+  .btn-success {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: #2da449; 
+    border-radius: 4px;
+    color: #fff; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+
+  .btn-success:hover {
+    background-color: #03240a; 
+  }
+
+  .header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.heading {
+    font-size: 70px;
+    color: #282424;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: grey;
+
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5); /* Add a light glass-like background color */
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for a glass effect */
+}
+
+.logo {
+  position: absolute;
+  top: 10px; /* Adjust the top position as needed */
+  left: 0px; /* Adjust the left position as needed */
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain the aspect ratio */
+}
+
+.msg{
+  font-size:x-small;
+  forced-color-adjust:auto;
+  color: red;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

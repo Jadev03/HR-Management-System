@@ -1,0 +1,73 @@
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding: 40px;
+  }
+  
+  .company {
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  .Emergency_cont-container {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .Emergency_cont-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .Emergency_cont-table th {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .Emergency_cont-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .Emergency_cont-table tbody tr:nth-child(even) {
+    background-color: #f0f0f0;
+  }
+  
+  .Emergency_cont-table tbody tr:hover {
+    background-color: rgb(91, 92, 95);
+    color: #fff;
+    transform: perspective(100px) translateZ(0px) rotateX(0deg);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .update {
+    background-color: rgb(22, 186, 22);
+    color: white;
+  }
+  
+  .delete {
+    background-color: rgb(188, 20, 20);
+    color: white;
+  }
+  
+  .update,
+  .delete {
+    text-decoration: solid;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .update:hover,
+  .delete:hover {
+    background-color: rgba(87, 153, 223, 0.8);
+    color: rgb(73, 67, 67);
+  }
+  
