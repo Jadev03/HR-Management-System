@@ -25,7 +25,9 @@
     "test": "react-scripts test --watchAll=false",
     "test:functional": "react-scripts test --watchAll=false --testPathPattern=functional",
     "test:integration": "react-scripts test --watchAll=false --testPathPattern=integration",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler dev"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "wrangler": "^4.105.0"
   }
 }
