@@ -1,0 +1,19 @@
+services:
+  db:
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+
+  backend:
+    restart: always
+    environment:
+      PORT: ${BACKEND_PORT:-8800}
+      DB_HOST: ${DB_HOST:-db}
+      DB_USER: ${DB_USER:-root}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      NODE_ENV: production
+
+  client:
+    restart: always
