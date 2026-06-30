@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Report.css';
+import '../styles/Report.css';
 
 const DepartmentEmployees = () => {
   const [departmentId, setDepartmentId] = useState('');
@@ -69,3 +69,4 @@ const DepartmentEmployees = () => {
 };
 
 export default DepartmentEmployees;
+

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Employee.css';
+import '../styles/Employee.css';
 import { Link } from 'react-router-dom';
 
 const Employee = () => {

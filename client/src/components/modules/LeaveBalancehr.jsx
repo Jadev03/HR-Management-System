@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/LeaveBalance.css';
+import '../styles/LeaveBalance.css';
 
 const LeaveBalance = () => {
   const [LeaveBalances, setLeaveBalances] = useState([]);
@@ -51,4 +51,5 @@ const LeaveBalance = () => {
 };
 
 export default LeaveBalance;
+
 

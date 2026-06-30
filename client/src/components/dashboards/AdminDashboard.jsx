@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styleAssets/AdminDashboard.css'; 
+import '../styles/AdminDashboard.css'; 
 import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
@@ -43,3 +43,4 @@ const AdminDashboard = () => {
 }
 
 export default AdminDashboard;
+

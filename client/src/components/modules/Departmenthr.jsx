@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Department.css';
+import '../styles/Department.css';
 
 const Department = () => {
   const [departments, setDepartments] = useState([]);
@@ -48,4 +48,5 @@ const Department = () => {
 };
 
 export default Department;
+
 

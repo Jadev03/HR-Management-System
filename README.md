@@ -100,7 +100,7 @@ http://localhost:3000/
 ```
 Replace `3000` with the port number you specified in the `.env` file.
 
-Refer the `Password.txt` file for the login credentials.
+Refer the `Passwords.txt` file for the login credentials.
 
 Try login with different roles and explore the system👽🔥.
 

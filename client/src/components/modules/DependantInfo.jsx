@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../styleAssets/DependentInfo.css';
+import '../styles/DependentInfo.css';
 
 const DependantInfo = () => {
   const [dependantInfoData, setDependantInfoData] = useState([]); // Rename the state variable
@@ -51,3 +51,4 @@ const DependantInfo = () => {
 };
 
 export default DependantInfo;
+

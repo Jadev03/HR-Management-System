@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Add_dept.css';
+import '../styles/Add_dept.css';
 
-const Add_secmng = () => {
+const AddSecMng = () => {
   const [SecMng, setSecMng] = useState({
     User_ID: '',
     Employee_ID: '',
@@ -77,4 +77,5 @@ const Add_secmng = () => {
   );
 };
 
-export default Add_secmng;
+export default AddSecMng;
+

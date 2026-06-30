@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../styleAssets/Report.css';
+import '../styles/Report.css';
 
 const DepartmentLeaves = () => {
   const [departmentId, setDepartmentId] = useState('');

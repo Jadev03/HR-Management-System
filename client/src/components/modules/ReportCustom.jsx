@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styleAssets/Report.css';
+import '../styles/Report.css';
 
 const CustomField = () => {
   const [employeeId, setEmployeeId] = useState('');
   const [fields, setFields] = useState([]);
 
-  const fetchCustomFields = async () => {
-    try {
-      const res = await axios.get("http://localhost:8800/custom_report/"+employeeId);
-      setFields(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
+    const fetchCustomFields = async () => {
+      if (!employeeId) {
+        setFields([]);
+        return;
+      }
+
+      try {
+        const res = await axios.get("http://localhost:8800/custom_report/" + employeeId);
+        setFields(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     fetchCustomFields();
   }, [employeeId]);
 
@@ -50,3 +55,4 @@ const CustomField = () => {
 };
 
 export default CustomField;
+

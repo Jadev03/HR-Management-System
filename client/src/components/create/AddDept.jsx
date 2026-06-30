@@ -2,9 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import {useNavigate } from 'react-router-dom';
-import '../styleAssets/Add_dept.css'
+import '../styles/Add_dept.css'
 
-const Add_dept = () => {
+const AddDept = () => {
   const [department, setDepartment] = useState({
     Dept_ID: '',
     Dept_Name: '',
@@ -71,4 +71,5 @@ const Add_dept = () => {
   );
 };
 
-export default Add_dept;
+export default AddDept;
+

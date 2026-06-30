@@ -1,9 +1,9 @@
 import React from 'react'
-import '../styleAssets/AdminDashboard.css';
+import '../styles/AdminDashboard.css';
 import { Link } from 'react-router-dom';
 
 
-const Level1_EmployeeDashboard = () => {
+const Level1EmployeeDashboard = () => {
   
   const  employeeId  =  sessionStorage.getItem('user');
   return (
@@ -32,4 +32,5 @@ const Level1_EmployeeDashboard = () => {
 };
 
 
-export default Level1_EmployeeDashboard
+export default Level1EmployeeDashboard
+

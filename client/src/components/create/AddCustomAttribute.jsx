@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../styleAssets/Add_employee.css';
+import '../styles/Add_employee.css';
 
 class CustomFieldForm extends Component {
   constructor(props) {
@@ -82,3 +82,4 @@ class CustomFieldForm extends Component {
 }
 
 export default CustomFieldForm;
+

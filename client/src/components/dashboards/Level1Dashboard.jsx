@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styleAssets/AdminDashboard.css'; 
+import '../styles/AdminDashboard.css'; 
 import { Link } from 'react-router-dom';
 
 const Level1EmployeeDashboard = () => {
@@ -31,3 +31,4 @@ const Level1EmployeeDashboard = () => {
 }
 
 export default Level1EmployeeDashboard;
+

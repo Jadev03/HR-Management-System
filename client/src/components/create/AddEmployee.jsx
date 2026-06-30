@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import {useNavigate } from 'react-router-dom';
-import '../styleAssets/Add_employee.css'
+import '../styles/Add_employee.css'
 
-const Add_employee = () => {
+const AddEmployee = () => {
   const [employee, setEmployee] = useState({
     Employee_ID: '',
     First_Name: '',
@@ -47,15 +46,12 @@ const Add_employee = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8800/employee', {employee, customFieldValue});
+      await axios.post('http://localhost:8800/employee', {employee, customFieldValue});
       console.log(customFieldValue);
-      //navigate('/employee');
     } catch (err) {
       console.log(err);
     }
   };
-
-  const navigate = useNavigate();
 
   return (
     <div className="form-container">
@@ -192,4 +188,5 @@ const Add_employee = () => {
   );
 };
 
-export default Add_employee;
+export default AddEmployee;
+

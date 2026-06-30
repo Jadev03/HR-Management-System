@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Add_dept.css';
+import '../styles/Add_dept.css';
 
 const Add_newuser = () => {
   const [newuser, setNewuser] = useState({
@@ -90,3 +90,4 @@ const Add_newuser = () => {
 };
 
 export default Add_newuser;
+

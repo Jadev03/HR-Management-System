@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Branch.css';
+import '../styles/Branch.css';
 
 const Branch = () => {
   const [branch, setBranch] = useState([]);
@@ -47,4 +47,5 @@ const Branch = () => {
 };
 
 export default Branch;
+
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Add_employee.css'
+import '../styles/Add_employee.css'
 
 const Add_leave_request = () => {
   const [leave, setLeaves] = useState({
@@ -86,3 +86,4 @@ const Add_leave_request = () => {
 };
 
 export default Add_leave_request;
+

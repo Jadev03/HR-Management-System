@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Add_dept.css';
+import '../styles/Add_dept.css';
 
-const Add_hr = () => {
+const AddHr = () => {
   const [HR, setHR] = useState({
     User_ID: '',
     Employee_ID: '',
@@ -77,4 +77,5 @@ const Add_hr = () => {
   );
 };
 
-export default Add_hr
+export default AddHr
+
