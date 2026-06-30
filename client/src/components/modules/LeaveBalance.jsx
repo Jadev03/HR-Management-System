@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/LeaveBalance.css';
+import '../styles/LeaveBalance.css';
 import { Link } from 'react-router-dom';
 
 const LeaveBalance = () => {
@@ -54,4 +54,5 @@ const LeaveBalance = () => {
 };
 
 export default LeaveBalance;
+
 

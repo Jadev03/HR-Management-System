@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/PersonalDetails.css';
+import '../styles/PersonalDetails.css';
 
 
 const PersonalDetails = () => {

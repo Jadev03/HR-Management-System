@@ -5,31 +5,31 @@ import {
   Routes,
   Route
 }from "react-router-dom";
-import Configure from "./components/configure/UpdateDepartment";
-import Append from "./components/append/AddJob";
+import Configure from "./components/update/UpdateDepartment";
+import Append from "./components/create/AddJob";
 import Department from './components/modules/Department';
-import Adddept from './components/append/Add_dept';
-import Addemployee from './components/append/Add_employee';
+import AddDept from './components/create/AddDept';
+import AddEmployee from './components/create/AddEmployee';
 import Login from './components/modules/Login';
-import AdminDashboard from './components/dashborads/AdminDashboard'
-import Level1Dashboard from './components/dashborads/Level1Dashboard'
-import SupervisorDashboard from './components/dashborads/SupervisorDashboard';
-import HRDashboard from './components/dashborads/HRDashboard';
-import SecMngUserDashboard from './components/dashborads/SecMngUserDashboard';
-import ManagerialEmployeeDashboard from './components/dashborads/ManagerialEmployeeDashboard';
+import AdminDashboard from './components/dashboards/AdminDashboard'
+import Level1Dashboard from './components/dashboards/Level1Dashboard'
+import SupervisorDashboard from './components/dashboards/SupervisorDashboard';
+import HRDashboard from './components/dashboards/HRDashboard';
+import SecMngUserDashboard from './components/dashboards/SecMngUserDashboard';
+import ManagerialEmployeeDashboard from './components/dashboards/ManagerialEmployeeDashboard';
 import Employee from './components/modules/Employee';
 import Branch from './components/modules/Branch';
 import Job from './components/modules/JobTitle';
 import LeaveBal from './components/modules/LeaveBalance';
-import UpdateLeaveBal from './components/configure/UpdateLeaveBal';
+import UpdateLeaveBal from './components/update/UpdateLeaveBal';
 import Paygrade from './components/modules/Paygrade';
-import UpdatePaygrade from './components/configure/UpdatePaygrade';
+import UpdatePaygrade from './components/update/UpdatePaygrade';
 import LeaveRequest from './components/modules/LeaveRequests';
 import EmergencyCont from './components/modules/EmergencyCont';
-import UpdateEmergencyCont from './components/configure/UpdateEmergCont';
+import UpdateEmergencyCont from './components/update/UpdateEmergCont';
 import DependantInfo from './components/modules/DependantInfo';
-import AddDependent from './components/append/AddDependent';
-import UpdateEmployee from './components/configure/UpdateEmployee';
+import AddDependent from './components/create/AddDependent';
+import UpdateEmployee from './components/update/UpdateEmployee';
 import Departmenthr from './components/modules/Departmenthr';
 import LeaveBalancehr from './components/modules/LeaveBalancehr';
 import Report from './components/modules/ReportbyDept';
@@ -37,15 +37,15 @@ import Report1 from './components/modules/ReportbyLeave';
 import Report2 from './components/modules/ReportbyPaygrade';
 import Report3 from './components/modules/ReportbyTitle';
 import Report4 from './components/modules/ReportCustom';
-import SecMngUserCreate from './components/append/Add_secmng';
-import HRUserCreate from './components/append/Add_hr';
+import SecMngUserCreate from './components/create/AddSecMng';
+import HRUserCreate from './components/create/AddHr';
 import Subordinate from './components/modules/Subordinates';
 import ReqLeave from './components/modules/RequestLeave';
 import PersonalDetails from './components/modules/PersonalDetails';
 import RALeave from './components/modules/RALeaves';
-import ActionTake from './components/configure/ActionTake';
-import AddNewUser from './components/append/NewUserCreate';
-import AddCustomField from './components/append/Add_custom_atttribute';
+import ActionTake from './components/update/ActionTake';
+import AddNewUser from './components/create/NewUserCreate';
+import AddCustomField from './components/create/AddCustomAttribute';
 
 function App() {
   return (
@@ -63,9 +63,9 @@ function App() {
           <Route path="/configure/:Dept_ID" element={<Configure/>}/>
           <Route path="/append" element={<Append/>}/>
           <Route path="/department" element={<Department/>}/>
-          <Route path="/add_dept" element={<Adddept/>}/>
+          <Route path="/add_dept" element={<AddDept/>}/>
           <Route path="/employee" element={<Employee/>}/>
-          <Route path="/add_employee" element={<Addemployee/>}/>
+          <Route path="/add_employee" element={<AddEmployee/>}/>
           <Route path="/branch" element={<Branch/>}/>
           <Route path="/job" element={<Job/>}/>
           <Route path="/leave_bal" element={<LeaveBal/>}/>
@@ -103,3 +103,4 @@ function App() {
 }
 
 export default App;
+

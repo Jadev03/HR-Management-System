@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Report.css';
+import '../styles/Report.css';
 
 const JobtitleEmployees = () => {
   const [jobTitleId, setJobTitleId] = useState('');
@@ -69,3 +69,4 @@ const JobtitleEmployees = () => {
 };
 
 export default JobtitleEmployees;
+

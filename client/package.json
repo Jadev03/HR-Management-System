@@ -22,7 +22,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test:functional": "react-scripts test --watchAll=false --testPathPattern=functional",
+    "test:integration": "react-scripts test --watchAll=false --testPathPattern=integration",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

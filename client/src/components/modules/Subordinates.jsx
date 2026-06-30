@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Report.css';
+import '../styles/Report.css';
 
 const Subordinates = () => {
   const [employees, setEmployees] = useState([]);
@@ -53,3 +53,4 @@ const Subordinates = () => {
 };
 
 export default Subordinates;
+

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/LeaveRequest.css';
+import '../styles/LeaveRequest.css';
 
 const LeaveRequest = () => {
   const [LeaveRequest, setLeaveRequest] = useState([]);
@@ -59,4 +59,5 @@ const LeaveRequest = () => {
 };
 
 export default LeaveRequest;
+
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/EmergencyCont.css';
+import '../styles/EmergencyCont.css';
 import { Link } from 'react-router-dom';
 
 const EmergencyCont = () => {
@@ -58,4 +58,5 @@ const EmergencyCont = () => {
 };
 
 export default EmergencyCont;
+
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Department.css';
+import '../styles/Department.css';
 import { Link } from 'react-router-dom';
 
 const Department = () => {
@@ -67,4 +67,5 @@ const Department = () => {
 };
 
 export default Department;
+
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styleAssets/Report.css';
+import '../styles/Report.css';
 
 const PaygradeEmployees = () => {
   const [paygradeId, setPaygradeId] = useState('');
@@ -68,3 +68,4 @@ const PaygradeEmployees = () => {
 };
 
 export default PaygradeEmployees;
+

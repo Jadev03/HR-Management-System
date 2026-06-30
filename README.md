@@ -100,7 +100,7 @@ http://localhost:3000/
 ```
 Replace `3000` with the port number you specified in the `.env` file.
 
-Refer the `Password.txt` file for the login credentials.
+Refer the `Passwords.txt` file for the login credentials.
 
 Try login with different roles and explore the system👽🔥.
 
@@ -111,4 +111,49 @@ Screenshot from HR Manager's dashboard:
 The system employs various stored procedures, functions, and triggers to ensure ACID properties and maintain data integrity. Foreign keys and primary keys are set appropriately to maintain consistency. Indexing has been applied to improve query performance where necessary.
 
 Refer `HRM_System_Group16.pdf` and `Project Description 2` for more information.
+
+## Docker Deployment
+
+This repository now includes Docker support for the full stack:
+
+- `client/Dockerfile` builds the React UI and serves it with Nginx.
+- `backend/Dockerfile` builds the API server.
+- `docker-compose.yml` starts MySQL, backend, and client together.
+- `docker-compose.prod.yml` overrides restart behavior for production-style runs.
+- `.env.example` contains the compose and runtime values you can copy into `.env`.
+
+### Local startup with Docker
+
+1. Copy `.env.example` to `.env` in the repository root.
+2. Make sure Docker Desktop is running.
+3. Start the stack:
+
+```bash
+docker compose up --build
+```
+
+4. Open the app in your browser:
+
+```bash
+http://localhost:3000
+```
+
+### Production-style compose run
+
+Use the production override when you want the same stack with always-on restarts:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+```
+
+### Important notes
+
+- The MySQL schema is loaded from `jupiterapparels_Grp 16.sql` the first time the database volume is created.
+- The backend container reaches MySQL through the service name `db`, not `localhost`.
+- The React app reaches the backend through the host-published backend port during local development.
+- If you need to reload the SQL seed from scratch, remove the Docker volume before starting again.
+
+### CI/CD
+
+A GitHub Actions workflow is included at `.github/workflows/ci.yml` to run backend tests, client tests, the client build, and Docker compose validation/build checks.
 

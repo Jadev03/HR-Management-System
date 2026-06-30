@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../styleAssets/Report.css';
+import '../styles/Report.css';
 
 const LeaveRequests = () => {
   const [leaves, setLeaves] = useState([]);
@@ -63,3 +63,4 @@ const LeaveRequests = () => {
 };
 
 export default LeaveRequests;
+
