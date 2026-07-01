@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiBaseUrl = (process.env.REACT_APP_API_URL || 'http://localhost:8800').replace(/\/+$/, '');
+const apiBaseUrl = ('https://hrthabebackend.duckdns.org' || 'http://localhost:8800').replace(/\/+$/, '');
 
 axios.defaults.baseURL = apiBaseUrl;
 
