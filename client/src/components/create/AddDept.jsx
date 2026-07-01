@@ -19,7 +19,7 @@ const AddDept = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8800/department', department);
+      const res = await axios.post('/department', department);
       console.log(res);
       navigate('/department');
     } catch (err) {

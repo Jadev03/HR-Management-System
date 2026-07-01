@@ -16,7 +16,7 @@ const Login = () => {
         console.log("User ID:", userID);
         console.log("Password:", password);
 
-        axios.post('http://localhost:8800/login', { User_ID: userID, Password: password })
+        axios.post('/login', { User_ID: userID, Password: password })
             .then(res => {
                 if (res.data.status === 'Success') {
                     const role = res.data.role;

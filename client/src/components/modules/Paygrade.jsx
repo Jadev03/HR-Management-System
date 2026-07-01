@@ -9,7 +9,7 @@ const Paygrade = () => {
   useEffect(() => {
     const fetchAllPaygrades = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/paygrade");
+        const res = await axios.get('/paygrade');
         setPaygrades(res.data);
       } catch (err) {
         console.log(err);

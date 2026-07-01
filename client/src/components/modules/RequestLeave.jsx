@@ -24,7 +24,7 @@ const Add_leave_request = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8800/request_leave', leave);
+      const res = await axios.post('/request_leave', leave);
       console.log(res);
 
     } catch (err) {

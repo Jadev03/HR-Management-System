@@ -16,7 +16,7 @@ const Append = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8800/job', job);
+      const res = await axios.post('/job', job);
       console.log(res);
       navigate('/job');
     } catch (err) {

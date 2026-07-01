@@ -8,7 +8,7 @@ const PaygradeEmployees = () => {
 
   const fetchPaygradeEmployees = async () => {
     try {
-      const res = await axios.get("http://localhost:8800/paygrade/"+paygradeId);
+      const res = await axios.get('/paygrade/' + paygradeId);
       setEmployees(res.data);
     } catch (err) {
       console.log(err);

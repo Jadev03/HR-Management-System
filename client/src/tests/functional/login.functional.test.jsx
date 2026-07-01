@@ -66,7 +66,7 @@ describe("Login functional tests", () => {
     fireEvent.click(screen.getByRole("button", { name: "Login" }));
 
     await waitFor(() => {
-      expect(mockPost).toHaveBeenCalledWith("http://localhost:8800/login", {
+      expect(mockPost).toHaveBeenCalledWith('/login', {
         User_ID: "U000001",
         Password: "admin123",
       });

@@ -8,7 +8,7 @@ const Branch = () => {
   useEffect(() => {
     const fetchAllBranch = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/branch");
+        const res = await axios.get('/branch');
         setBranch(res.data);
       } catch (err) {
         console.log(err);

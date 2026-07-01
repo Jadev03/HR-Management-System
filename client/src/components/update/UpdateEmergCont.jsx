@@ -24,7 +24,7 @@ const UpdateEmergCont = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8800/emergency_cont/"+id, EmergCont);
+      await axios.put('/emergency_cont/' + id, EmergCont);
       navigate('/emergency_cont');
     } catch (err) {
       console.log(err);

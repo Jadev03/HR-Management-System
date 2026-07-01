@@ -12,7 +12,7 @@ const PersonalDetails = () => {
             try {
                 console.log('aa'+sessionStorage.getItem('user'));
                 // Replace the URL with the correct endpoint for fetching employee personal details
-                const res = await axios.get("http://localhost:8800/personal-details/"+sessionStorage.getItem('user'));
+                const res = await axios.get('/personal-details/' + sessionStorage.getItem('user'));
                 console.log(res.data);
                 setEmployee(res.data);
             } catch (err) {

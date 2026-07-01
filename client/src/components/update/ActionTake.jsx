@@ -19,7 +19,7 @@ const UpdateLeaveRequest = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8800/leave_request_takeaction/" + id, leave);
+      await axios.put('/leave_request_takeaction/' + id, leave);
       setMessage({ text: 'Successfully updated!', type: 'success' });
     } catch (err) {
       setMessage({ text: 'An error occured while updating :(', type: 'error' });

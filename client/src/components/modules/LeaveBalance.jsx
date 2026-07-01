@@ -9,7 +9,7 @@ const LeaveBalance = () => {
   useEffect(() => {
     const fetchAllLeaveBalances = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/leave_bal");
+        const res = await axios.get('/leave_bal');
         setLeaveBalances(res.data);
       } catch (err) {
         console.log(err);

@@ -23,7 +23,7 @@ const UpdatePaygrade = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8800/paygrade/"+id, paygrade);
+      await axios.put('/paygrade/' + id, paygrade);
       navigate('/paygrade');
     } catch (err) {
       console.log(err);

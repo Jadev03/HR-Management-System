@@ -8,7 +8,7 @@ const LeaveRequest = () => {
   useEffect(() => {
     const fetchAllLeaveRequest = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/leave_request");
+        const res = await axios.get('/leave_request');
         setLeaveRequest(res.data);
       } catch (err) {
         console.log(err);
