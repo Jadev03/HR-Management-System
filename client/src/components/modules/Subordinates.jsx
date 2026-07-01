@@ -8,7 +8,7 @@ const Subordinates = () => {
   const fetchSubordinates = async () => {
     try {
       console.log('aa'+sessionStorage.getItem('user'));
-      const res = await axios.get("http://localhost:8800/subordinate/"+sessionStorage.getItem('user'));
+      const res = await axios.get('/subordinate/' + sessionStorage.getItem('user'));
       setEmployees(res.data);
     } catch (err) {
       console.log(err);

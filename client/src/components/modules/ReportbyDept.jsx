@@ -8,7 +8,7 @@ const DepartmentEmployees = () => {
 
   const fetchDepartmentEmployees = async () => {
     try {
-      const res = await axios.get("http://localhost:8800/dept/"+departmentId);
+      const res = await axios.get('/dept/' + departmentId);
       setEmployees(res.data);
     } catch (err) {
       console.log(err);

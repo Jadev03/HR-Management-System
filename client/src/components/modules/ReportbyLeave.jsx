@@ -12,7 +12,7 @@ const DepartmentLeaves = () => {
 
   const fetchDepartmentLeaves = async () => {
     try {
-      const res = await axios.get('http://localhost:8800/leavebal/', {
+      const res = await axios.get('/leavebal/', {
         params: {  departmentId,startDate, endDate } // pass start and end dates  as parameters
       });
       setLeaves(res.data);

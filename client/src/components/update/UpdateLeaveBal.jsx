@@ -22,7 +22,7 @@ const UpdateLeaveBal = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8800/leave_bal/"+id, leave_bal);
+      await axios.put('/leave_bal/' + id, leave_bal);
       navigate('/leave_bal');
     } catch (err) {
       console.log(err);

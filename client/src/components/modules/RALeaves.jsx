@@ -10,7 +10,7 @@ const LeaveRequests = () => {
     try {
       console.log('aa' + sessionStorage.getItem('user'));
       const employeeId = sessionStorage.getItem('user');
-      const res = await axios.get(`http://localhost:8800/ra_leaves/${employeeId}`);
+      const res = await axios.get(`/ra_leaves/${employeeId}`);
       if (Array.isArray(res.data)) {
         setLeaves(res.data);
       } else {

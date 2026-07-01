@@ -9,7 +9,7 @@ const Department = () => {
   useEffect(() => {
     const fetchAllDepartments = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/department");
+        const res = await axios.get('/department');
         setDepartments(res.data);
       } catch (err) {
         console.log(err);
@@ -20,7 +20,7 @@ const Department = () => {
 
   // const handleDelete = async (id) => {
   //   try {
-  //     const res = await axios.delete(`http://localhost:8800/department/${id}`);
+  //     const res = await axios.delete(`/department/${id}`);
   //     console.log(res);
   //     window.location.reload();
   //   } catch (err) {

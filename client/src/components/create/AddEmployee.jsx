@@ -26,7 +26,7 @@ const AddEmployee = () => {
   useEffect(() => {
     const fetchAllCustomField = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/add-custom-field");
+        const res = await axios.get('/add-custom-field');
         setCustomFields(res.data);
       } catch (err) {
         console.log(err);
@@ -46,7 +46,7 @@ const AddEmployee = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8800/employee', {employee, customFieldValue});
+      await axios.post('/employee', {employee, customFieldValue});
       console.log(customFieldValue);
     } catch (err) {
       console.log(err);

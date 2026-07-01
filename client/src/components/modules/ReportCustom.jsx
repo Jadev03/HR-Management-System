@@ -14,7 +14,7 @@ const CustomField = () => {
       }
 
       try {
-        const res = await axios.get("http://localhost:8800/custom_report/" + employeeId);
+        const res = await axios.get('/custom_report/' + employeeId);
         setFields(res.data);
       } catch (err) {
         console.log(err);

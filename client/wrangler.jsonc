@@ -1,14 +1,10 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
+
   "name": "hr-management-system",
-  "compatibility_date": "2026-06-30",
-  "observability": {
-    "enabled": true
-  },
+  "compatibility_date": "2026-07-01",
   "assets": {
-    "directory": "build"
-  },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+    "directory": "./build",
+    "not_found_handling": "single-page-application"
+  }
 }
+

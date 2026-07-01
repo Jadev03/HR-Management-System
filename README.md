@@ -151,9 +151,51 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 - The MySQL schema is loaded from `jupiterapparels_Grp 16.sql` the first time the database volume is created.
 - The backend container reaches MySQL through the service name `db`, not `localhost`.
 - The React app reaches the backend through the host-published backend port during local development.
+- For hosted frontend builds such as Cloudflare Pages, set `REACT_APP_API_URL` to your deployed backend URL before building the client.
 - If you need to reload the SQL seed from scratch, remove the Docker volume before starting again.
 
 ### CI/CD
 
 A GitHub Actions workflow is included at `.github/workflows/ci.yml` to run backend tests, client tests, the client build, and Docker compose validation/build checks.
+
+The production workflow at `.github/workflows/production.yml` can also publish Docker images to GHCR and deploy the Oracle-hosted database and backend automatically without cloning the repository on the VM.
+
+### Oracle deployment automation
+
+The Oracle deployment workflow uses `docker-compose.oracle.yml` and copies only the deploy bundle to the VM:
+
+- `docker-compose.oracle.yml`
+- `Caddyfile`
+- `Database/jupiterapparels_Grp 16.sql`
+- a generated `.env` file built from GitHub Actions secrets
+
+To enable it, configure these repository secrets:
+
+- `ORACLE_HOST` - your Oracle VM public IP or DNS name
+- `ORACLE_USERNAME` - the SSH user on the VM
+- `ORACLE_SSH_PRIVATE_KEY` - the private key used by GitHub Actions to SSH into the VM
+- `ORACLE_DEPLOY_PATH` - the target folder on the VM, for example `/home/ubuntu/hrms-deploy`
+- `ORACLE_MYSQL_ROOT_PASSWORD`
+- `ORACLE_MYSQL_DATABASE`
+- `ORACLE_MYSQL_PORT`
+- `ORACLE_BACKEND_PORT`
+- `ORACLE_DB_USER`
+- `ORACLE_DB_PASSWORD`
+- `ORACLE_DB_NAME`
+- `ORACLE_API_DOMAIN` - for example `api.yourdomain.com`
+- `ORACLE_ACME_EMAIL` - email for automatic HTTPS certificate issuance
+- `ORACLE_CORS_ALLOWED_ORIGINS` - comma-separated frontend origins allowed to call the API
+- `GHCR_READ_USERNAME` - a GitHub username that can read the package
+- `GHCR_READ_TOKEN` - a GitHub token with `read:packages`
+
+Deployment runs automatically on pushes to `Develop`, on version tags matching `v*`, and on manual workflow dispatch.
+
+For Cloudflare Pages and Oracle to work together over HTTPS:
+
+- create a DNS `A` record for your backend domain such as `api.yourdomain.com` pointing to `158.178.143.114`
+- open inbound TCP ports `80` and `443` on the Oracle VM and in Oracle Cloud security rules
+- set `REACT_APP_API_URL=https://api.yourdomain.com` in Cloudflare Pages before rebuilding the client
+- set `ORACLE_CORS_ALLOWED_ORIGINS` to the exact frontend origins you will serve, such as your `pages.dev` URL and your final custom frontend domain
+
+The Oracle deployment uses Caddy to terminate HTTPS on `api.yourdomain.com` and reverse-proxy traffic to the internal backend container on port `8800`.
 

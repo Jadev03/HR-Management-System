@@ -9,7 +9,7 @@ const DependantInfo = () => {
   useEffect(() => {
     const fetchAllDependantInfo = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/dependant_info");
+        const res = await axios.get('/dependant_info');
         setDependantInfoData(res.data); // Update the state variable here
       } catch (err) {
         console.log(err);

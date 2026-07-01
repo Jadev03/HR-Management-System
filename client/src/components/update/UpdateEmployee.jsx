@@ -24,7 +24,7 @@ const UpdateEmployee = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8800/employee/"+id, employee);
+      await axios.put('/employee/' + id, employee);
       navigate('/employee');
     } catch (err) {
       console.log(err);

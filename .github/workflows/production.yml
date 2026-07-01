@@ -1,0 +1,140 @@
+name: Production CD
+
+on:
+  push:
+    branches:
+      - Develop
+      - main
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  BACKEND_IMAGE: hrms-backend
+  CLIENT_IMAGE: hrms-client
+  ORACLE_COMPOSE_FILE: docker-compose.oracle.yml
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: |
+            backend/package-lock.json
+            client/package-lock.json
+
+      - name: Run backend tests
+        working-directory: backend
+        run: npm ci && npm test
+
+      - name: Run client tests and build
+        working-directory: client
+        run: npm ci && npm run test:functional && npm run test:integration && npm run build
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: verify
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compute lowercase image owner
+        id: image_owner
+        run: echo "owner_lc=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_OUTPUT"
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push backend image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          push: true
+          tags: |
+            ghcr.io/${{ steps.image_owner.outputs.owner_lc }}/${{ env.BACKEND_IMAGE }}:latest
+            ghcr.io/${{ steps.image_owner.outputs.owner_lc }}/${{ env.BACKEND_IMAGE }}:${{ github.ref_name }}
+
+      - name: Build and push client image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./client
+          push: true
+          tags: |
+            ghcr.io/${{ steps.image_owner.outputs.owner_lc }}/${{ env.CLIENT_IMAGE }}:latest
+            ghcr.io/${{ steps.image_owner.outputs.owner_lc }}/${{ env.CLIENT_IMAGE }}:${{ github.ref_name }}
+
+  deploy-oracle:
+    runs-on: ubuntu-latest
+    needs: publish
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/Develop' || startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compute lowercase image owner
+        id: image_owner
+        run: echo "owner_lc=${GITHUB_REPOSITORY_OWNER,,}" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare deployment bundle
+        run: |
+          mkdir -p .deploy/Database
+          cp "${{ env.ORACLE_COMPOSE_FILE }}" .deploy/docker-compose.oracle.yml
+          cp Caddyfile .deploy/Caddyfile
+          cp "Database/jupiterapparels_Grp 16.sql" ".deploy/Database/jupiterapparels_Grp 16.sql"
+          cat <<EOF > .deploy/.env
+          IMAGE_OWNER=${{ steps.image_owner.outputs.owner_lc }}
+          MYSQL_ROOT_PASSWORD=${{ secrets.ORACLE_MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE=${{ secrets.ORACLE_MYSQL_DATABASE }}
+          MYSQL_PORT=${{ secrets.ORACLE_MYSQL_PORT }}
+          BACKEND_PORT=${{ secrets.ORACLE_BACKEND_PORT }}
+          DB_USER=${{ secrets.ORACLE_DB_USER }}
+          DB_PASSWORD=${{ secrets.ORACLE_DB_PASSWORD }}
+          DB_NAME=${{ secrets.ORACLE_DB_NAME }}
+          API_DOMAIN=${{ secrets.ORACLE_API_DOMAIN }}
+          ACME_EMAIL=${{ secrets.ORACLE_ACME_EMAIL }}
+          CORS_ALLOWED_ORIGINS=${{ secrets.ORACLE_CORS_ALLOWED_ORIGINS }}
+          EOF
+
+      - name: Copy deployment bundle to Oracle VM
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.ORACLE_HOST }}
+          username: ${{ secrets.ORACLE_USERNAME }}
+          key: ${{ secrets.ORACLE_SSH_PRIVATE_KEY }}
+          source: ".deploy/docker-compose.oracle.yml,.deploy/Caddyfile,.deploy/.env,.deploy/Database/jupiterapparels_Grp 16.sql"
+          target: ${{ secrets.ORACLE_DEPLOY_PATH }}
+          strip_components: 1
+
+      - name: Deploy on Oracle VM
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.ORACLE_HOST }}
+          username: ${{ secrets.ORACLE_USERNAME }}
+          key: ${{ secrets.ORACLE_SSH_PRIVATE_KEY }}
+          script: |
+            set -eu
+            mkdir -p "${{ secrets.ORACLE_DEPLOY_PATH }}/Database"
+            cd "${{ secrets.ORACLE_DEPLOY_PATH }}"
+            echo "${{ secrets.GHCR_READ_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_READ_USERNAME }}" --password-stdin
+            docker compose --env-file .env -f docker-compose.oracle.yml pull backend proxy
+            docker compose --env-file .env -f docker-compose.oracle.yml up -d
+            docker image prune -f

@@ -9,7 +9,7 @@ const Employee = () => {
   useEffect(() => {
     const fetchAllEmployees = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/employee");
+        const res = await axios.get('/employee');
         setEmployees(res.data);
       } catch (err) {
         console.log(err);

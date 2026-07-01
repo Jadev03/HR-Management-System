@@ -19,7 +19,7 @@ const Configure = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.put("http://localhost:8800/department/"+id, department);
+      await axios.put('/department/' + id, department);
       navigate('/department');
     } catch (err) {
       console.log(err);

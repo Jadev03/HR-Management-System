@@ -89,4 +89,32 @@ describe("Functional API tests (mocked DB)", () => {
     assert.ok(Array.isArray(response.body));
     assert.equal(response.body[0].Dept_ID, "SL001D1");
   });
+
+  it("allows configured browser origins", async () => {
+    const db = createMockDb((sql, params, cb) => cb(null, []));
+    const app = createApp(db, {
+      allowedOrigins: ["https://hrms.example.com", "https://api.example.com"],
+    });
+
+    const response = await request(app)
+      .get("/")
+      .set("Origin", "https://hrms.example.com");
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers["access-control-allow-origin"], "https://hrms.example.com");
+  });
+
+  it("blocks browser origins outside the configured allowlist", async () => {
+    const db = createMockDb((sql, params, cb) => cb(null, []));
+    const app = createApp(db, {
+      allowedOrigins: ["https://hrms.example.com"],
+    });
+
+    const response = await request(app)
+      .get("/")
+      .set("Origin", "https://unknown.example.com");
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers["access-control-allow-origin"], undefined);
+  });
 });

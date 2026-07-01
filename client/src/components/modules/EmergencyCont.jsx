@@ -9,7 +9,7 @@ const EmergencyCont = () => {
   useEffect(() => {
     const fetchAllEmergencyConts = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/emergency_cont");
+        const res = await axios.get('/emergency_cont');
         setEmergencyConts(res.data);
       } catch (err) {
         console.log(err);

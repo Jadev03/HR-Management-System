@@ -25,7 +25,7 @@ class CustomFieldForm extends Component {
     const { fieldID, fieldName } = this.state;
     if (fieldID && fieldName) {
       try {
-        await axios.post(`http://localhost:8800/add-custom-field`, {
+        await axios.post('/add-custom-field', {
           Field_ID: fieldID,
           Field_name: fieldName,
         });

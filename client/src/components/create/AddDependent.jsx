@@ -18,7 +18,7 @@ const Append = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8800/dependant_info', dependent);
+      const res = await axios.post('/dependant_info', dependent);
       console.log(res);
       navigate('/dependant_info');
     } catch (err) {

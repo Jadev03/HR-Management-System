@@ -20,7 +20,7 @@ const AddHr = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8800/userCreate', HR);
+      const res = await axios.post('/userCreate', HR);
       console.log(res);
 
       if (res.data === 'Success') {
